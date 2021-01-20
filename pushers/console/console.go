@@ -116,5 +116,10 @@ func (b *Console) Send(e event.Event) {
 		return true
 	})
 
+	json, err := e.MarshalJSON()
+	if err != nil {
+		fmt.Fprintf(b.Writer, "###HD## %s\n", string(json))
+	}
+
 	b.ch <- mp
 }
