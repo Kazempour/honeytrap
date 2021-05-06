@@ -711,6 +711,7 @@ func (hc *Honeytrap) handle(conn net.Conn) {
 	}
 
 	log.Debug("Handling connection for %s => %s %s(%s)", conn.RemoteAddr(), conn.LocalAddr(), sm.Name, sm.Type)
+	fmt.Println(fmt.Sprintf("###HD## {\"category\": \"%s\", \"type\": \"extra-info\", \"source-ip\": \"%s\", \"destination-ip\": \"%s\", \"msg\": \"new connection\"}", sm.Type, conn.RemoteAddr(), conn.LocalAddr()))
 
 	newConn = TimeoutConn(newConn, time.Second*30)
 
